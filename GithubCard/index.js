@@ -4,6 +4,15 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+axios.get('https://api.github.com/users/M-Maxamed')
+.then(res => {
+  entaryCards.appendChild(createGitCard(res.data))
+
+})
+.catch(erro => {
+  console.log(erro)
+});
+
 
 
 
@@ -34,9 +43,30 @@
       </div>
     </div>
 */
+function createCard(user) {
+
+const card = document.createElement('div');
+  const img = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const name = document.createElement('h3');
+  const username = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
 
 
-
+  card.classList.add('card');
+  img.src = user.avatar_url;
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  name.textContent = user.name;
+  username.classList.add('username');
+  username.textContent = user.login;
+  location.textContent = `Location: ${user.location}`;
+  profileLink.href = user.html_url;
+}
 /*
   STEP 4: Pass the data received from Github into your function, and append the returned markup to the DOM as a child of .cards
 */
